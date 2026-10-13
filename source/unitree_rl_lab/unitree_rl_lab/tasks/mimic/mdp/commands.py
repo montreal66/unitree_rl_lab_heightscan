@@ -243,7 +243,12 @@ class MotionCommand(CommandTerm):
     def _resample_command(self, env_ids: Sequence[int]):
         if len(env_ids) == 0:
             return
-        self._adaptive_sampling(env_ids)
+        if self.cfg.motion_start_time_step is not None:
+            ts = int(self.cfg.motion_start_time_step)
+            ts = max(0, min(ts, self.motion.time_step_total - 1))
+            self.time_steps[env_ids] = ts
+        else:
+            self._adaptive_sampling(env_ids)
 
         root_pos = self.body_pos_w[:, 0].clone()
         root_ori = self.body_quat_w[:, 0].clone()
@@ -369,6 +374,9 @@ class MotionCommandCfg(CommandTermCfg):
     adaptive_lambda: float = 0.8
     adaptive_uniform_ratio: float = 0.1
     adaptive_alpha: float = 0.001
+
+    #: If set, skip adaptive time-bin sampling and fix the motion frame on each resample (typical for play / eval).
+    motion_start_time_step: int | None = None
 
     anchor_visualizer_cfg: VisualizationMarkersCfg = FRAME_MARKER_CFG.replace(prim_path="/Visuals/Command/pose")
     anchor_visualizer_cfg.markers["frame"].scale = (0.2, 0.2, 0.2)

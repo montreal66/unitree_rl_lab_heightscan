@@ -27,10 +27,24 @@ class BasePPORunnerCfg(RslRlOnPolicyRunnerCfg):
         entropy_coef=0.005,
         num_learning_epochs=5,
         num_mini_batches=4,
-        learning_rate=1.0e-3,
+        learning_rate=1.0e-3, # learning_rate=1.0e-3,
         schedule="adaptive",
         gamma=0.99,
         lam=0.95,
         desired_kl=0.01,
         max_grad_norm=1.0,
     )
+
+
+@configclass
+class HoiTerrainPpoRunnerCfg(BasePPORunnerCfg):
+    """PPO runner for the fixed climb_15 HOI terrain task."""
+
+    experiment_name = "unitree_g1_29dof_mimic_hoi_terrain"
+
+
+@configclass
+class HoiTerrainPerceptiveRaycastPpoRunnerCfg(BasePPORunnerCfg):
+    """PPO runner for HOI terrain perceptive RayCaster task."""
+
+    experiment_name = "unitree_g1_29dof_mimic_hoi_terrain_perceptive_raycast"

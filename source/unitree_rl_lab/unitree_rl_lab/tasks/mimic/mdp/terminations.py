@@ -7,6 +7,7 @@ try:
     from isaaclab.utils.math import quat_apply_inverse
 except ImportError:
     from isaaclab.utils.math import quat_rotate_inverse as quat_apply_inverse
+from isaaclab.utils.math import quat_error_magnitude
 
 
 if TYPE_CHECKING:
@@ -42,6 +43,12 @@ def bad_anchor_ori(
     return (motion_projected_gravity_b[:, 2] - robot_projected_gravity_b[:, 2]).abs() > threshold
 
 
+def bad_anchor_quat_error(env: ManagerBasedRLEnv, command_name: str, threshold: float) -> torch.Tensor:
+    """Terminate when anchor rotation error exceeds threshold (rad), via ``quat_error_magnitude``."""
+    command: MotionCommand = env.command_manager.get_term(command_name)
+    return quat_error_magnitude(command.anchor_quat_w, command.robot_anchor_quat_w) > threshold
+
+
 def bad_motion_body_pos(
     env: ManagerBasedRLEnv, command_name: str, threshold: float, body_names: list[str] | None = None
 ) -> torch.Tensor:
@@ -60,3 +67,16 @@ def bad_motion_body_pos_z_only(
     body_indexes = _get_body_indexes(command, body_names)
     error = torch.abs(command.body_pos_relative_w[:, body_indexes, -1] - command.robot_body_pos_w[:, body_indexes, -1])
     return torch.any(error > threshold, dim=-1)
+
+
+def non_finite_robot_state(env: ManagerBasedRLEnv, asset_cfg: SceneEntityCfg) -> torch.Tensor:
+    asset: Articulation = env.scene[asset_cfg.name]
+    invalid = torch.zeros(env.num_envs, dtype=torch.bool, device=asset.device)
+
+    for value in (asset.data.root_state_w, asset.data.body_state_w, asset.data.joint_pos, asset.data.joint_vel):
+        invalid |= ~torch.isfinite(value).reshape(env.num_envs, -1).all(dim=1)
+
+    # A zero quaternion is finite but invalid and can produce NaN in quaternion math.
+    body_quat_norm_sq = torch.sum(asset.data.body_quat_w.square(), dim=-1)
+    invalid |= torch.any(body_quat_norm_sq < 1.0e-12, dim=1)
+    return invalid
