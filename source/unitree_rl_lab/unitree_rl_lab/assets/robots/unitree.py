@@ -9,6 +9,7 @@ Reference: https://github.com/unitreerobotics/unitree_ros
 """
 
 import os
+from pathlib import Path
 
 import isaaclab.sim as sim_utils
 from isaaclab.actuators import IdealPDActuatorCfg, ImplicitActuatorCfg
@@ -17,7 +18,11 @@ from isaaclab.utils import configclass
 
 from unitree_rl_lab.assets.robots import unitree_actuators
 
-UNITREE_MODEL_DIR = "path/to/unitree_model"  # Replace with the actual path to your unitree_model directory
+# Local default keeps task assets portable after cloning this repository.  An
+# external model package can still be selected with ``UNITREE_MODEL_DIR``.
+UNITREE_MODEL_DIR = os.getenv(
+    "UNITREE_MODEL_DIR", str(Path(__file__).resolve().parents[5] / "assets" / "unitree_model")
+)
 UNITREE_ROS_DIR = "path/to/unitree_ros"  # Replace with the actual path to your unitree_ros package
 
 

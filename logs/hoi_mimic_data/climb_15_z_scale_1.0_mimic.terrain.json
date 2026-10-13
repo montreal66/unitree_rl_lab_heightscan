@@ -1,0 +1,55 @@
+{
+  "source_npz": "/home/sus/tushuqi/gitlab/tushuqi/unitree_rl_lab/datasets/robot-terrain/climb_15_z_scale_1.0.npz",
+  "terrain_urdf": "/home/sus/tushuqi/gitlab/tushuqi/unitree_rl_lab/datasets/models/terrain/climb_15/multi_boxes_z_scale_1.0.urdf",
+  "terrain_init_pos": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "terrain_init_quat": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "mjcf_boxes": [
+    {
+      "name": "pyhoi_terrain_geom_0_collision",
+      "pos": [
+        -0.2595505617977528,
+        0.11568539325842692,
+        0.23730337078651687
+      ],
+      "quat": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "half_size": [
+        0.6624277543820225,
+        0.489240157752809,
+        0.23730337078651687
+      ]
+    },
+    {
+      "name": "pyhoi_terrain_geom_1_collision",
+      "pos": [
+        0.0,
+        0.0,
+        0.03707865168539326
+      ],
+      "quat": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "half_size": [
+        1.853932584269663,
+        1.853932584269663,
+        0.03707865168539326
+      ]
+    }
+  ]
+}
