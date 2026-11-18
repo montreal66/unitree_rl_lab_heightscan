@@ -1,0 +1,167 @@
+{
+  "timestamp_utc": "2026-09-20T16:00:34.303475+00:00",
+  "task": "Unitree-G1-29dof-Mimic-HOI_terrain-Perceptive-Raycast",
+  "checkpoint": "/root/autodl-tmp/isaac-stack/src/unitree_rl_lab/logs/rsl_rl/unitree_g1_29dof_mimic_hoi_terrain_perceptive_raycast/2026-09-20_17-43-29_climb15_raycast_resume500/model_4000.pt",
+  "seed": 42,
+  "num_envs": 128,
+  "root_y_offset_m": 0.2,
+  "horizon_steps": 184,
+  "success_definition": "After one unscored reset warm-up step, no termination through reference frame T-1.",
+  "success_count": 99,
+  "success_rate": 0.7734375,
+  "first_termination_counts": {
+    "time_out": 0,
+    "invalid_robot_state": 0,
+    "anchor_pos": 28,
+    "anchor_ori": 1,
+    "ee_body_pos": 0,
+    "unknown_done": 0
+  },
+  "failures": [
+    {
+      "env_id": 0,
+      "step": 89,
+      "term": "anchor_pos"
+    },
+    {
+      "env_id": 5,
+      "step": 89,
+      "term": "anchor_pos"
+    },
+    {
+      "env_id": 8,
+      "step": 89,
+      "term": "anchor_pos"
+    },
+    {
+      "env_id": 16,
+      "step": 89,
+      "term": "anchor_pos"
+    },
+    {
+      "env_id": 24,
+      "step": 89,
+      "term": "anchor_pos"
+    },
+    {
+      "env_id": 25,
+      "step": 90,
+      "term": "anchor_pos"
+    },
+    {
+      "env_id": 26,
+      "step": 90,
+      "term": "anchor_pos"
+    },
+    {
+      "env_id": 35,
+      "step": 89,
+      "term": "anchor_pos"
+    },
+    {
+      "env_id": 41,
+      "step": 159,
+      "term": "anchor_pos"
+    },
+    {
+      "env_id": 44,
+      "step": 89,
+      "term": "anchor_pos"
+    },
+    {
+      "env_id": 50,
+      "step": 89,
+      "term": "anchor_pos"
+    },
+    {
+      "env_id": 59,
+      "step": 89,
+      "term": "anchor_pos"
+    },
+    {
+      "env_id": 62,
+      "step": 89,
+      "term": "anchor_pos"
+    },
+    {
+      "env_id": 68,
+      "step": 89,
+      "term": "anchor_pos"
+    },
+    {
+      "env_id": 70,
+      "step": 89,
+      "term": "anchor_pos"
+    },
+    {
+      "env_id": 75,
+      "step": 89,
+      "term": "anchor_pos"
+    },
+    {
+      "env_id": 80,
+      "step": 119,
+      "term": "anchor_ori"
+    },
+    {
+      "env_id": 82,
+      "step": 89,
+      "term": "anchor_pos"
+    },
+    {
+      "env_id": 83,
+      "step": 89,
+      "term": "anchor_pos"
+    },
+    {
+      "env_id": 84,
+      "step": 89,
+      "term": "anchor_pos"
+    },
+    {
+      "env_id": 87,
+      "step": 89,
+      "term": "anchor_pos"
+    },
+    {
+      "env_id": 91,
+      "step": 89,
+      "term": "anchor_pos"
+    },
+    {
+      "env_id": 94,
+      "step": 90,
+      "term": "anchor_pos"
+    },
+    {
+      "env_id": 99,
+      "step": 89,
+      "term": "anchor_pos"
+    },
+    {
+      "env_id": 113,
+      "step": 89,
+      "term": "anchor_pos"
+    },
+    {
+      "env_id": 116,
+      "step": 89,
+      "term": "anchor_pos"
+    },
+    {
+      "env_id": 118,
+      "step": 89,
+      "term": "anchor_pos"
+    },
+    {
+      "env_id": 122,
+      "step": 89,
+      "term": "anchor_pos"
+    },
+    {
+      "env_id": 125,
+      "step": 90,
+      "term": "anchor_pos"
+    }
+  ]
+}

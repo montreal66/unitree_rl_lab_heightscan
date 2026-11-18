@@ -1,0 +1,21 @@
+{
+  "timestamp_utc": "2026-09-20T15:59:27.532617+00:00",
+  "task": "Unitree-G1-29dof-Mimic-HOI_terrain-Perceptive-Raycast",
+  "checkpoint": "/root/autodl-tmp/isaac-stack/src/unitree_rl_lab/logs/rsl_rl/unitree_g1_29dof_mimic_hoi_terrain_perceptive_raycast/2026-09-20_17-43-29_climb15_raycast_resume500/model_4000.pt",
+  "seed": 42,
+  "num_envs": 128,
+  "root_y_offset_m": -0.2,
+  "horizon_steps": 184,
+  "success_definition": "After one unscored reset warm-up step, no termination through reference frame T-1.",
+  "success_count": 128,
+  "success_rate": 1.0,
+  "first_termination_counts": {
+    "time_out": 0,
+    "invalid_robot_state": 0,
+    "anchor_pos": 0,
+    "anchor_ori": 0,
+    "ee_body_pos": 0,
+    "unknown_done": 0
+  },
+  "failures": []
+}
